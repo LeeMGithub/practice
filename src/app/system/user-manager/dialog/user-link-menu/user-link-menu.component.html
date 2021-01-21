@@ -1,0 +1,7 @@
+<p-dialog header="关联菜单" [(visible)]="state" [modal]="true" [width]="400" [height]="560">  
+  <p-tree [value]="nodes" selectionMode="checkbox" [(selection)]="linkedNodes" [propagateSelectionUp]="true"  [propagateSelectionDown]="true" (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)"></p-tree>
+  <div style="margin-top:10px;">
+    <p-button class="bt1" (onClick)="save()" label="保存"></p-button>
+    <p-button class="bt2" (onClick)="cancel()" label="取消"></p-button>
+</div>
+</p-dialog>

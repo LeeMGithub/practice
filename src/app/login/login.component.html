@@ -1,0 +1,40 @@
+<div class="login-container">
+    <div class="layer">
+      <div class="some-space">
+        <div class="form">
+          <h2>品质看板系统</h2>
+          <div class="item">
+            <i class="pi pi-user"></i>
+            <input
+              autocomplete="off"
+              type="text"
+              class="input"
+              [(ngModel)]="model.username"
+              placeholder="请输入用户名"
+            />
+          </div>
+          <div class="item">
+            <i class="pi pi-lock"></i>
+            <input
+              autocomplete="off"
+              type="password"
+              class="input"
+              [(ngModel)]="model.password"
+              maxlength="20"
+              placeholder="请输入密码"
+            />
+          </div>
+          <button  class="loginBtn" pButton   (click)="login($event)">立即登录</button>
+        </div>
+      </div>
+    </div>
+    <div>
+        <ul class="slide-box">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+    </div>
+    <div class="footer">Copyright &copy; 2006-{{year}}京东方科技集团股份有限公司版权所有.</div>
+</div>

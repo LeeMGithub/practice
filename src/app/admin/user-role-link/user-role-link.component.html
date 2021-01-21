@@ -1,0 +1,79 @@
+<div class="ui-g"></div>
+   <span class="ui-label">
+      <label>用户：</label>
+      <input type="text" [(ngModel)]="seach_userAccount">
+      <label>角色：</label>
+      <input type="text" [(ngModel)]="seach_roleId">
+      <button (click)="getUserRoleLink()">查询</button>
+  </span>
+ <hr>
+<p-table [value]="userRoleLinkList" selectionMode="single" [(selection)]="userRoleLink">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>工号</th>
+          <th>姓名</th>
+          <th>角色</th>
+          <th>描述</th>
+          <th style="width: 7em"></th>
+      </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-userRoleLink >
+      <tr>
+          <td [pEditableColumn]="userRoleLink" [pEditableColumnField]="'userAccount'">{{userRoleLink.userAccount}}</td>
+          <td [pEditableColumn]="userRoleLink" [pEditableColumnField]="'userName'">{{userRoleLink.userName}}</td>
+          <td [pEditableColumn]="userRoleLink" [pEditableColumnField]="'roleId'">{{userRoleLink.roleId}}</td>
+          <td [pEditableColumn]="userRoleLink" [pEditableColumnField]="'roleDesc'">{{userRoleLink.roleDesc}}</td>          
+          <td>
+            <button pButton type="button" (click)="deleteData(userRoleLink)" label="Delete"></button>
+          </td>     
+      </tr>
+  </ng-template>
+
+  <ng-template pTemplate="summary">
+      <div style="text-align: left">
+          <p-button icon="fa fa-plus" label="Add" [disabled]="false" (onClick)="showDialog()"></p-button>
+      </div>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Title" [(visible)]="display" [width]="600" [minWidth]="400" (onHide)="dialogHide()">
+  <div class="ui-g ui-fluid">
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label>工号:</label>
+          </div>
+          <div class="ui-g-8">
+              <p-dropdown [options]="userList" [(ngModel)]="dropdown_userAccount" [style]="{'width':'20em'}" filter="true">
+                    <ng-template let-user pTemplate="selectedItem">
+                        <span>{{user.value}}</span>
+                    </ng-template>
+                    <ng-template let-user1 pTemplate="item">
+                            <span>{{user1.label}}</span>
+                    </ng-template>
+                </p-dropdown>
+          </div>          
+      </div>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <label>角色:</label>
+          </div>
+          <div class="ui-g-8">
+               <p-dropdown [options]="roleList" [(ngModel)]="dropdown_roleId" [style]="{'width':'20em'}" filter="true">
+                <ng-template let-role pTemplate="selectedItem">
+                    <span>{{role.value}}</span>
+                </ng-template>
+                <ng-template let-role2 pTemplate="item">
+                        <span>{{role2.label}}</span>
+                </ng-template>
+            </p-dropdown>
+          </div>
+      </div>      
+  </div>
+  <p-footer>
+      <div>
+          <p-button label="Delete"></p-button>                 
+          <p-button label="Save" (onClick)="addUserRoleLink()"></p-button>
+      </div>
+  </p-footer>
+</p-dialog>

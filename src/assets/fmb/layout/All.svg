@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024">
+	<use xlink:href="EQPType1#eqp1" x="100" y="150" />
+	<use xlink:href="EQPType1#eqp1" x="400" y="240" transform="translate(1090,0)rotate(90)" />
+	<use xlink:href="EQPType2#eqp2" x="80" y="300" />
+</svg>

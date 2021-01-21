@@ -1,0 +1,13 @@
+<p-dialog header="关联角色" [(visible)]="state" [modal]="true" [width]="493" [height]="420">
+  <p-pickList [source]="source" [target]="target" [showSourceControls]="false" [showTargetControls]="false">
+    <ng-template let-car pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div>{{car}}</div>
+        </div>
+    </ng-template>
+  </p-pickList>  
+  <div class="ui-g-12" style="margin-top:10px;">
+    <p-button class="save" label="保存" (onClick)="save()"></p-button>
+    <p-button class="cancel" label="取消" (onClick)="cancel()"></p-button>
+  </div>
+</p-dialog>

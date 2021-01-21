@@ -1,0 +1,68 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.rmadbgmangecontainer {
+  color: aliceblue;
+  background-color: #141e37;
+  padding: 0 0.25rem 0.25rem 0.25rem;
+}
+.rmadbgmangecontainer .ui-widget-header{
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+.rmadbgmangecontainer .header {
+  text-align: center;
+  font-size: 0.375rem;
+  color: #ffffff;
+  height: 0.875rem;
+  line-height: 0.875rem;
+}
+.rmadbgmangecontainer .selec {
+  height: 0.702781rem;
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rmadbgmangecontainer .line {
+  height: 1px;
+  /* background-color: red; 不支持线性的时候显示 */
+  background-image: linear-gradient(to right, rgba(56, 127, 251, 0), #387ffb, rgba(56, 127, 251, 0));
+}
+.rmadbgmangecontainer .echart-item {
+  height: 300px;
+  border: 1px solid #2a408e;
+  display: flex;
+}
+.rmadbgmangecontainer .echart {
+  height: 100%;
+  width: 33.3%;
+}
+.rmadbgmangecontainer .table {
+  display: flex;
+  flex-wrap: wrap;
+}
+.rmadbgmangecontainer .table .table-item {
+  /* width: 25%; */
+  height: 500px;
+  border: 1px solid #2a408e;
+  box-sizing: border-box;
+}
+.rmadbgmangecontainer tr {
+  background: transparent !important;
+  border: 1px solid #15378e !important;
+}
+.rmadbgmangecontainer th {
+  border: 1px solid #15378e !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: #ffffff !important;
+  font-size: 12px!important;
+}
+.rmadbgmangecontainer td {
+  text-align: center;
+  font-size: 12px!important;
+  border: 1px solid #15378e !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}

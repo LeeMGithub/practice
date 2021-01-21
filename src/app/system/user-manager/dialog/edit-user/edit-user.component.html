@@ -1,0 +1,43 @@
+<p-dialog header="编辑用户" [(visible)]="state" [modal]="true" [width]="400" [height]="490">
+    <form name="form" (ngSubmit)="save()" #f="ngForm">
+        <div class="ui-g">
+            <div class="ui-g-12 form-group">
+                <label>用户账号:</label>
+                <input type="text" class="form-control" [(ngModel)]="userInfo.userAccount" name="userAccount"
+                    [disabled]="true">
+            </div>
+            <div class="ui-g-12 form-group">
+                <label>用户姓名:</label>
+                <input type="text" class="form-control" [(ngModel)]="userInfo.username" name="username" autocomplete="off">
+            </div>
+            <div class="ui-g-12 form-group">
+                <label>现地:</label>
+                <select class="form-control" [(ngModel)]="userInfo.siteName" name="siteName" required>
+                    <option *ngFor="let site of siteName" [value]="site">{{site}}</option>
+                </select>
+            </div>
+            <div class="ui-g-12 form-group">
+                <label>邮箱:</label>
+                <input type="text" class="form-control" [(ngModel)]="userInfo.email" autocomplete="off" name="email">
+            </div>
+            <div class="ui-g-12 form-group">
+                <label>手机:</label>
+                <input type="text" class="form-control" [(ngModel)]="userInfo.phone" name="phone" autocomplete="off">
+            </div>
+            <div class="ui-g-12 form-group">
+                <label>账号状态:</label>
+                <select class="form-control" [(ngModel)]="userInfo.enabled" name="enabled" required>
+                    <option *ngFor="let e of enabled" [value]="e">{{e}}</option>
+                </select>
+            </div>
+            <div class="ui-g-12 form-group">
+                <label>备注:</label>
+                <textarea name="description" class="form-control" [(ngModel)]="userInfo.description"></textarea>
+            </div>
+            <div class="ui-g-12" style="margin-top:10px;">
+                <p-button class="bt1" type="submit" [disabled]="!f.form.valid" label="保存"></p-button>
+                <p-button class="bt2" (onClick)="cancel()" label="取消"></p-button>
+            </div>
+        </div>
+    </form>
+</p-dialog>

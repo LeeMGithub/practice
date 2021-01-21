@@ -1,0 +1,15 @@
+<div class="copq_container">
+  <header class="copq_header">
+    {{ headTitle }}
+    <p-button
+      label="返回"
+      (onClick)="goBack()"
+      class="copq_header_button"
+    ></p-button>
+  </header>
+  <div class="copq_line"></div>
+  <ng-content select="[name=search]"></ng-content>
+  <div class="copq_content">
+    <ng-content select="[name=data]"></ng-content>
+  </div>
+</div>

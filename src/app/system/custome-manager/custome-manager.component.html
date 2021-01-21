@@ -1,0 +1,23 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-g-nopad" style="background-color:white;">
+  <div class="ui-g-12 ui-g-nopad" style="padding-top:5px;">
+    <p-panel class="bidm-no-border" header="目标达成率">
+      <p-table #dt [columns]="monthList" [value]="data" selectionMode="single">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>分厂名</th>
+            <th *ngFor="let col of columns">{{col}}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr [pSelectableRow]="rowData">
+            <td>
+              {{rowData['site']}}
+            </td>
+            <td *ngFor="let col of rowData['status']">{{col}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-panel>
+  </div>
+</div>

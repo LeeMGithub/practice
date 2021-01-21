@@ -1,0 +1,47 @@
+<p-dialog header="编辑菜单" [(visible)]="state" [modal]="true" [width]="400" [height]="530">
+  <form name="form" (ngSubmit)="save()" #f="ngForm">
+      <div class="ui-g">
+          <div class="ui-g-12 form-group">
+              <label class="em_label">菜单标识:</label>
+              <input type="text" class="form-control em_input" [(ngModel)]="menu.menuId" name="menuId" autocomplete="off" required>
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">中文菜单名:</label>
+              <input type="text" class="form-control em_input" [(ngModel)]="menu.chinese" name="chinese" autocomplete="off">
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">菜单URL:</label>
+              <input type="text" class="form-control em_input" [(ngModel)]="menu.routerLink" name="routerLink" autocomplete="off">
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">父菜单标识:</label>
+              <select class="form-control em_select" [(ngModel)]="menu.parentId" name="parentId">
+                  <option *ngFor="let item of allParentIdIsNotLeaf" [value]="item['menuId']">{{item.chinese}}</option>
+              </select>
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">菜单图标:</label>
+              <input type="text" class="form-control em_input" [(ngModel)]="menu.icon" name="icon" autocomplete="off">
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">排序字段:</label>
+              <input type="text" class="form-control em_input" [(ngModel)]="menu.sort" name="sort" autocomplete="off">
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">是否菜单:</label>
+              <select class="form-control em_select" [(ngModel)]="menu.isLeaf" name="isLeaf" required>
+                  <option value="Y">是</option>
+                  <option value="N">否</option>
+              </select>
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="em_label">备注:</label>
+              <textarea name="desc" class="form-control em_textarea" [(ngModel)]="menu.desc"></textarea>
+          </div>
+          <div style="margin-top:10px;">
+              <p-button class="bt1" type="submit" [disabled]="!f.form.valid"label="保存"></p-button>
+              <p-button class="bt2" (onClick)="cancel();f.reset()" label="取消"></p-button>
+          </div>
+      </div>
+  </form>  
+</p-dialog>

@@ -1,0 +1,12 @@
+<p-dialog header="数据导入" name="importdialog" [(visible)]="state" [modal]="true" [width]="500" [height]="260">
+  <div class="ui-g-12" style="border-bottom:2px solid rgba(173, 170, 170, 0.555);">
+  <p-fileUpload class="myfileupload" name="file" url="./api/copq/upload" (onUpload)="onUpload($event)"
+  chooseLabel="选择文件" uploadLabel="导入" onBeforeUpload="test" cancelLabel="取消" accept=".xls,.xlsx" maxFileSize="1000000">
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </ng-template>
+  </p-fileUpload>
+  </div>
+</p-dialog>

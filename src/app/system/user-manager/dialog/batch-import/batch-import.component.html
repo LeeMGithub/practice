@@ -1,0 +1,17 @@
+<p-dialog header="人员信息导入" name="batchimportdialog" [(visible)]="state" [modal]="true" [width]="500" [height]="260">
+    <div class="ui-g-12" style="border-bottom:2px solid rgba(173,170,170,0.555);">
+        <p-fileUpload class="myfileupload" id="myfileupload" name="demo[]" url="./api/user-manager/import" (onUpload)="onUpload($event)"
+        chooseLabel="选择文件" uploadLabel="导入" (onBeforeUpload)="onBeforeUpload($event)" cancelLabel="取消" accept=".xls,.xlsx" maxFileSize="1000000">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+    </div>
+    <div id="importprocessbar">
+        <div style="margin-bottom:50px;">导入中……</div>
+        <p-progressBar mode="indeterminate" [style]="{'height': '10px'}"></p-progressBar>
+        <div style="margin-bottom:50px;"></div>
+    </div>
+</p-dialog>

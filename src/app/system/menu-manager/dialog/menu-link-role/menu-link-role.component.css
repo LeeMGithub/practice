@@ -1,0 +1,16 @@
+.save{
+    float: left;
+    margin-left: 164px;
+}
+.cancel{
+    float: left;
+    margin-left: 10px;
+}
+.ui-picklist .ui-picklist-list{
+    height: 20em;
+    width: 15em;
+}
+body .ui-picklist .ui-picklist-buttons .ui-button.ui-button-icon-only {
+    width: 2.3em;
+    height: 2.3em;
+}

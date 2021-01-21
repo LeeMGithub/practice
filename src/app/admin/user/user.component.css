@@ -1,0 +1,7 @@
+body .ui-picklist.ui-picklist-responsive .ui-picklist-buttons .ui-button.ui-button-icon-only{
+        height: 2.5em !important;
+    }
+
+.ut-type > .ui-dropdown {     
+    min-width: 5.5em;
+}

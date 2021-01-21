@@ -1,0 +1,15 @@
+<div class="map">
+  <div class="switch">
+    <div (click)="change(true)" [ngClass]="{'switch-item': true, current: switchCase}">中国</div>
+    <div (click)="change(false)" [ngClass]="{'switch-item': true, current: !switchCase }">世界</div>
+  </div>
+  <div class="chart" *ngIf="area=='china'" style="height: 4.625rem;"  echarts [options]="echartOption" ></div>
+  <div class="map1"></div>
+  <div class="map2"></div>
+  <div class="map3"></div>
+</div>
+
+<!-- <div style="height: 500px;">
+  <p-cascadeSelect [(ngModel)]="selectedCity1" [options]="countries" optionLabel="cname" optionGroupLabel="name"
+  [optionGroupChildren]="['states', 'cities']" [style]="{'minWidth': '3.443629rem'}" placeholder="Select a City"></p-cascadeSelect>
+</div> -->

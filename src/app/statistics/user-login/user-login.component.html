@@ -1,0 +1,66 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-lg-12" style="border:1px solid lightgray; background-color:mintcream;height: 6.5em;">
+      <div class="ui-g-4">
+          <label>{{'admin.useraccount' | translate}}：</label>
+          <input type="text" [(ngModel)]="userAccount" pInputText>
+      </div>
+      <div class="ui-g-8">
+        <label>{{'admin.username' | translate}}：</label>
+        <input type="text" [(ngModel)]="userName" pInputText>
+      </div>
+      <div class="ui-g-4">
+        <div class="ui-g">
+            <label >{{'log.loginTime' | translate}}：</label>
+            <p-calendar [(ngModel)]="startTime" [showIcon]="true" dateFormat="yy.mm.dd" hourFormat="24"></p-calendar>
+          </div>
+      </div>
+      <div class="ui-g-4">
+        <div class="ui-g">
+            <label >{{'log.logoutTime' | translate}}：</label>
+            <p-calendar [(ngModel)]="endTime" [showIcon]="true" dateFormat="yy.mm.dd" hourFormat="24" maxDateCount=1></p-calendar>
+          </div>
+      </div>
+      <p-button style="float: right;" icon="fa fa-search" label="{{'admin.query' | translate}}" [disabled]="false"
+          (onClick)="paginator.changePage(0);"></p-button>
+  </div>
+
+  <div class="ui-g-12 ui-lg-12">
+      <p-panel class="bidm-no-border">
+          <p-header>
+              <div class="ui-helper-clearfix">
+                  <span class="ui-panel-title">用户登录信息</span>
+              </div>
+          </p-header>
+          <p-table [value]="userLoginInfoList" selectionMode="single" [(selection)]="userLoginInfo">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>工号</th>
+                      <th>姓名</th>
+                      <th>登录时间</th>
+                      <th>登出时间</th>
+                      <th>IP地址</th>
+                      <th>浏览器</th>
+                   </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-userLoginInfo>
+                  <tr>
+                      <td pEditableColumn>{{userLoginInfo.userAccount}}</td>
+                      <td pEditableColumn>{{userLoginInfo.userName}}</td>
+                      <td pEditableColumn>{{userLoginInfo.loginTime | date:'yyyy-MM-dd HH:mm:ss'}}</td> 
+                      <td pEditableColumn>{{userLoginInfo.logoutTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                      <td pEditableColumn>{{userLoginInfo.ipAddr}}</td>
+                      <td pEditableColumn>{{userLoginInfo.client}}</td>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="summary" >
+                  <p-paginator [alwaysShow]="true" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions"
+                      (onPageChange)="paginate($event)" #p></p-paginator>
+              </ng-template>
+          </p-table>
+          <p-footer>
+              <span><span class="loadMsg">加载耗时:</span>{{report1_loadTime}}</span>
+          </p-footer>
+      </p-panel>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-g-nopad" style="background-color:white;">
+    <div class="ui-g-4">
+      <label style="font-size: 18px;">菜单名:</label>
+      <input type="text" style="height:25px" [(ngModel)]="menuId" class="special_input" />
+    </div>
+    <div class="ui-g-8">
+      <p-button label="关联角色" [disabled]="isTableSelected" (onClick)="menuLinkRoleMethod()" style="float: right;">
+      </p-button>
+      <p-button label="删除" [disabled]="isTableSelected" (onClick)="deleteClickMethod()"
+        style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="修改" [disabled]="isTableSelected" (onClick)="editClickMethod()"
+        style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="新增" (onClick)="addClickMethod()" style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="查询" (onClick)="queryClickMethod()" style="float: right;margin-right: 5px;"></p-button>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" style="padding-top:5px;">
+    <p-panel class="bidm-no-border" header="菜单信息">
+      <p-table [columns]="cols" [value]="pageData" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+        (onRowUnselect)="onRowUnselect($event)">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [style.width]="col.width">
+              {{col.header}}
+              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+              </p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <p-paginator [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)"></p-paginator>
+    </p-panel>
+  </div>
+
+  <p-dialog header="系统提示" [(visible)]="systemPromptState" [modal]="true" [responsive]="true" [width]="350">
+    <span style="font-size: 18px;color:red;">您查询的菜单不存在, 请确认您输入的用户账号是否正确。</span>
+  </p-dialog>
+
+  <!-- 新增dialog-->
+  <app-add-new-menu></app-add-new-menu>
+
+  <!-- 编辑dialog-->
+  <app-edit-menu></app-edit-menu>
+
+  <!-- 关联角色dialog-->
+  <app-menu-link-role></app-menu-link-role>
+</div>

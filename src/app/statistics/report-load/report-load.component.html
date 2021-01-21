@@ -1,0 +1,70 @@
+
+<div class="ui-g">
+  <div class="ui-g-12 ui-lg-12" style="border:1px solid lightgray; background-color:mintcream;height: 6.5em;">
+      <div class="ui-g-4">
+          <label>{{'admin.useraccount' | translate}}：</label>
+          <input type="text" [(ngModel)]="userAccount" pInputText>
+      </div>
+      <div class="ui-g-4">
+        <label>{{'admin.username' | translate}}：</label>
+        <input type="text" [(ngModel)]="userName" pInputText>
+      </div>
+      <div class="ui-g-4">
+        <label>{{'admin.menuId' | translate}}：</label>
+        <input type="text" [(ngModel)]="menuId" pInputText>
+     </div>
+      <div class="ui-g-4">
+        <div class="ui-g">
+            <label >{{'log.loginTime' | translate}}：</label>
+            <p-calendar [(ngModel)]="startTime" [showIcon]="true" dateFormat="yy.mm.dd" hourFormat="24"></p-calendar>
+          </div>
+      </div>
+      <div class="ui-g-4">
+        <div class="ui-g">
+            <label >{{'log.logoutTime' | translate}}：</label>
+            <p-calendar [(ngModel)]="endTime" [showIcon]="true" dateFormat="yy.mm.dd" hourFormat="24" maxDateCount=1></p-calendar>
+          </div>
+      </div>
+      <p-button style="float: right;" icon="fa fa-search" label="{{'admin.query' | translate}}" [disabled]="false"
+          (onClick)="paginator.changePage(0);"></p-button>
+  </div>
+
+  <div class="ui-g-12 ui-lg-12">
+      <p-panel class="bidm-no-border">
+          <p-header>
+              <div class="ui-helper-clearfix">
+                  <span class="ui-panel-title">报表加载信息</span>
+              </div>
+          </p-header>
+          <p-table [value]="reportLoadInfoList" selectionMode="single" [(selection)]="reportLoadInfo">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>工号</th>
+                      <th>姓名</th>
+                      <th>菜单</th>
+                      <th>报表名称</th>
+                      <th>加载耗时(ms)</th>
+                      <th>请求开始时间</th>
+                      <th>请求结束时间</th>
+                  </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-reportLoadInfo>
+                  <tr>
+                      <td pEditableColumn>{{reportLoadInfo.userAccount}}</td>
+                      <td pEditableColumn>{{reportLoadInfo.userName}}</td>
+                      <td pEditableColumn>{{reportLoadInfo.menuId}}</td>
+                      <td pEditableColumn>{{reportLoadInfo.reportName}}</td>
+                      <td pEditableColumn>{{reportLoadInfo.loadTime}}</td>   
+                      <td pEditableColumn>{{reportLoadInfo.startTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>    
+                      <td pEditableColumn>{{reportLoadInfo.endTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>               
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="summary" >
+                  <p-paginator [alwaysShow]="true" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions"
+                      (onPageChange)="paginate($event)" #p></p-paginator>
+              </ng-template>
+          </p-table>
+      </p-panel>
+  </div>
+</div>

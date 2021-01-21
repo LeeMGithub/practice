@@ -1,0 +1,90 @@
+
+<div class="brand-container">
+  <div class="wrap">
+    <header>
+      <div class="weather">
+        <img :src="imgSrc">
+        <!-- <span class="tem">{{ weatcherData.tem }}°C</span>
+        <span class="wea">{{ weatcherData.wea }}</span> -->
+      </div>
+      <h2>显示事业 品质看板页面</h2>
+      <div class="showTime">
+        <!-- <span class="time">{{ nowTime }}</span>
+        <span class="date">
+          <span>{{ week }}</span>
+          <span>{{ date }}</span> -->
+        <!-- </span> -->
+      </div>
+    </header>
+
+    <section class="mainbox">
+      <div class="item left">
+        <div class="panel">
+          <h2>售后服务</h2>
+          <!-- <business /> -->
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel">
+          <h2>材料品质</h2>
+          <!-- <talent /> -->
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel">
+          <h2>开发品质</h2>
+          <!-- <income /> -->
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+
+      <div class="item center">
+        <div class="resume">
+          <div class="resume-hd" style="height: 4.625rem;">
+            <!-- <app-chart-a></app-chart-a> -->
+            <!-- <ng-container *ngComponentOutlet="ChartAComponent"></ng-container> -->
+            <app-chart-a [area]="area"></app-chart-a>
+          </div>
+          <!-- <div class="resume-bd">
+            <ul>
+              <li>公司总人数（单位：人）</li>
+              <li>技术人员占比（单位：%）</li>
+              <li>产品投资额（单位：万元）</li>
+            </ul>
+          </div> -->
+          <div class="resume-hd" style="height: 3.5rem;">
+            <h2>过程品质</h2>
+          </div>
+          <div class="resume-hd" style="height: 3.5rem;margin-bottom: 0;">
+            <h2>出货品质</h2>
+          </div>
+
+          <!-- <div class="map">
+            <div class="chart" id="chart-a" style="height: 600px;"  echarts [options]="chartOption" ></div>
+            <div class="map1"></div>
+            <div class="map2"></div>
+            <div class="map3"></div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="item right">
+        <div class="panel">
+          <h2>公告事项</h2>
+          <!-- <wordCloud /> -->
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel">
+          <h2>质量成本</h2>
+          <!-- <distribution /> -->
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel">
+          <h2>人员效能</h2>
+          <!-- <history /> -->
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</div>

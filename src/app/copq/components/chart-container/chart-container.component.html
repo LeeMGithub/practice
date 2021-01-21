@@ -1,0 +1,7 @@
+<div
+  class="box"
+  [ngStyle]="{ width: width || '100%', height: height || '30vh' }"
+>
+  <div class="box_title">{{ chartTitle }}</div>
+  <ng-content select="[name=chart]"></ng-content>
+</div>

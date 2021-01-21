@@ -1,0 +1,18 @@
+<p-dialog header="编辑角色" [(visible)]="state" [modal]="true" [width]="400" [height]="270">
+  <form name="form" (ngSubmit)="save()" #f="ngForm">
+      <div class="ui-g">
+          <div class="ui-g-12 form-group">
+              <label class="er_label">菜单标识:</label>
+              <input type="text" class="form-control er_input" [(ngModel)]="role.rolename" name="menuId" autocomplete="off" required>
+          </div>
+          <div class="ui-g-12 form-group">
+              <label class="er_label">备注:</label>
+              <textarea name="desc" class="form-control er_textarea" [(ngModel)]="role.description"></textarea>
+          </div>
+          <div class="ui-g-12" style="margin-top:10px;">
+              <p-button class="er_bt1" type="submit" [disabled]="!f.form.valid"label="保存"></p-button>
+              <p-button class="er_bt2" (onClick)="cancel();f.reset()" label="取消"></p-button>
+          </div>
+      </div>
+  </form>  
+</p-dialog>

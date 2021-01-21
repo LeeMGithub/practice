@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+	<g id="eqp2">
+		<circle cx="280" cy="230" r="150" id="fmain" stroke="black" fill="transparent" />
+		<rect x="185" y="157" width="30" height="50" id="u1" stroke="black" fill="transparent" />
+		<rect x="295" y="157" width="30" height="50" id="u2" stroke="black" fill="transparent" />
+		<rect x="255" y="260" width="30" height="50" id="u3" stroke="black" fill="transparent" />
+	</g>
+</svg>

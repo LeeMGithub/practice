@@ -1,0 +1,100 @@
+<div class="managecontainer">
+  <div class="wrap">
+    <header (click)="gohome($event)" class="header" id="header"
+      style="background: url(../../../assets/picture/top.png) no-repeat center">
+      DBG COPQ管理
+    </header>
+    <section>
+      <div class="line"></div>
+      <div class="selec">
+        <label>日期:
+          <p-calendar [(ngModel)]="date" [ngModelOptions]="{ standalone: true }" view="month" [locale]="cn"
+            [yearNavigator]="true" yearRange="2000:2030" dateFormat="yy-mm" [readonlyInput]="true"
+            inputId="monthpicker">
+          </p-calendar>
+        </label>
+        <p-button label="查询" (onClick)="queryClickMethod()" style="float: right"></p-button>
+      </div>
+    </section>
+    <section>
+      <div class="manage-trend">
+        <div class="echart1" echarts [options]="option2" (chartClick)="onChartClick($event)" [theme]="echartTheme"></div>
+        <div>
+          <p-table [columns]="cols" [value]="products">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th>现地</th>
+                <th *ngFor="let col of columns">
+                  {{ col }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns" let-idx="rowIndex">
+              <tr>
+                <td>{{ tableTarget[idx] }}</td>
+                <td [ngClass]="{ detailFont: idx == 2 && lessThan(rowData[col]) }" *ngFor="let col of columns">
+                  {{ rowData[col] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+      <div class="manage-trend" style="margin-top:  0.175695rem;">
+        <div class="echart1" echarts [options]="option4" [theme]="echartTheme"></div>
+      </div>
+      <!-- 明细 -->
+      <div class="manage-detail">
+        <div class="detail-echart">
+          <div class="detail-item">
+            <div class="item echart2" echarts [options]="option3" [theme]="echartTheme"></div>
+            <div class="item">
+              <div class="items">
+                <div class="panel top" style="
+                    background: url(../../../assets/picture/Panel.png) no-repeat
+                      center;
+                  ">
+                  内失
+                </div>
+                <div class="echart2 down" echarts [options]="option6" [theme]="echartTheme"></div>
+              </div>
+              <div class="items">
+                <div class="module top" style="
+                    background: url(../../../assets/picture/Module.png)
+                      no-repeat center;
+                  ">
+                  外失
+                </div>
+                <div class="echart2 down" echarts [options]="option7" [theme]="echartTheme"></div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-item" style="align-items: flex-start; padding-top: 5px">
+            <p-table [columns]="detailCols" [value]="DetailTrendData" [scrollable]="true" scrollHeight="44vh">
+              <ng-template pTemplate="header" let-columns>
+                <tr class="headTr">
+                  <th class="td" colspan="3">日期</th>
+                  <th class="td" *ngFor="let col of columns">
+                    {{ col.header }}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-columns="columns" let-idx="rowIndex">
+                <tr class="bodyTr bodyBackground">
+                  <td class="td" *ngIf="idx === 3" [attr.rowspan]="6">内失</td>
+                  <td class="td" *ngIf="idx === 9" [attr.rowspan]="9">外失</td>
+                  <td [attr.colspan]="detailTable[idx].col" [attr.rowspan]="detailTable[idx].row">
+                    {{ detailTable[idx].name }}
+                  </td>
+                  <td class="td" *ngFor="let col of columns">
+                    {{ rowData[col.field] }}
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

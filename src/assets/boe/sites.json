@@ -1,0 +1,7 @@
+[
+    { "name": "B1", "value": { "code": 1, "name": "B1"} },
+    { "name": "B2", "value": { "code": 2, "name": "B2"} },
+    { "name": "B3", "value": { "code": 3, "name": "B3"} },
+    { "name": "B4", "value": { "code": 4, "name": "B4"} },
+    { "name": "B5", "value": { "code": 5, "name": "B5"} }
+]

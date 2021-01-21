@@ -1,0 +1,34 @@
+.box {
+  display: flex;
+
+  position: relative;
+
+  box-sizing: border-box;
+  border: 1px solid #15378e;
+  border-radius: 0.125rem;
+
+  background: rgba(68, 88, 153, 0.15);
+  background-size: 100% auto;
+
+  flex-direction: column;
+}
+
+.box_title {
+  box-sizing: border-box;
+  border-radius: 0.125rem 0.125rem 0 0;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+  width: 100%;
+  height: 0.525rem;
+  max-height: 0.525rem;
+
+  font-size: 0.3rem;
+  line-height: 0.525rem;
+
+  color: #fff;
+  background-image: linear-gradient(
+    90deg,
+    rgba(52, 116, 243, 0.392) 0%,
+    rgba(59, 106, 241, 0.29) 100%
+  );
+}

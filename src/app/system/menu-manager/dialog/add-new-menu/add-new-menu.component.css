@@ -1,0 +1,37 @@
+.anm_label{
+    font-size: 16px;
+    padding-left: 30px;
+}
+.anm_input{
+    width: 173px;
+    height: 30px;
+    font-size: 15px;
+    float: right;
+    margin-right: 30px;
+}
+.anm_select{
+    width: 173px;
+    height: 30px;
+    float: right;
+    margin-right: 30px;
+}
+.anm_textarea{
+    width: 173px;
+    height: 80px;
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+}
+
+.bt1{
+    float: left;
+    margin-left: 203px;
+}
+.bt2{
+    float: left;
+    margin-left: 10px;
+}
+/* 验证 */
+.ng-invalid:not(form)  {
+    border: 2px solid red;
+}

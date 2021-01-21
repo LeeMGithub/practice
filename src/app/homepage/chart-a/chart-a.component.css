@@ -1,0 +1,83 @@
+.map {
+  position: relative;
+  height: 4.62328767rem;
+}
+.map .chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 5.54794521rem;
+  width: 100%;
+}
+.map .map1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.54794521rem;
+  height: 3.54794521rem;
+  background: url(../../../assets/img/brand/map.png) no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.3;
+}
+.map .map2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.54794521rem;
+  height: 3.54794521rem;
+  background: url(../../../assets/img/brand/map.png) no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.3;
+  width: 4.40410959rem;
+  height: 4.40410959rem;
+  background-image: url(../../../assets/img/brand/lbx.png);
+  opacity: 0.6;
+  -webkit-animation: rotate 15s linear infinite;
+  animation: rotate 15s linear infinite;
+  z-index: 2;
+}
+.map .map3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.54794521rem;
+  height: 3.54794521rem;
+  background: url(../../../assets/img/brand/map.png) no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.3;
+  width: 3.87671233rem;
+  height: 3.87671233rem;
+  background-image: url(../../../assets/img/brand/jt.png);
+  -webkit-animation: rotate1 10s linear infinite;
+  animation: rotate1 10s linear infinite;
+}
+
+.map .switch {
+  position     : absolute;
+  left         : 2%;
+  top          : 3%;
+  background   : #15378E;
+  border-radius: 2px;
+  border-radius: 2px;
+  width        : 146px;
+  height       : 28px;
+  display      : flex;
+  align-items  : center;
+  z-index: 999;
+}
+
+.map .switch .switch-item {
+  font-size : 12px;
+  color     : #FFFFFF;
+  flex      : 1;
+  text-align: center;
+  cursor    : pointer;
+}
+
+.map .switch .current {
+  color: #FFC400;
+}

@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+
+.bidm-no-border .ui-widget-header,
+.bidm-no-border-panel .ui-widget-header {
+  background-color: #d0d0d0;
+  border: 1px solid #d0d0d0;
+}
+
+.bidm-no-border .ui-widget-content,
+.bidm-no-border-panel .ui-widget-content {
+  border: 0;
+}
+
+.bidm-no-border .ui-panel .ui-panel-titlebar,
+.bidm-no-border-panel .ui-panel .ui-panel-titlebar {
+  border-bottom-width: 0px;
+}
+
+.bidm-no-border .ui-panel .ui-panel-content {
+  padding: 0;
+}
+
+.bidm-no-border-panel .ui-panel .ui-panel-content {
+  padding: 0;
+  border: 1px solid #d0d0d0;
+}
+
+.dialog-label {
+  color: #3d4d66;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.bidm .ui-dropdown {
+  min-width: 8.5em;
+}
+
+.layout-content {
+  overflow-y: auto;
+}
+
+.ui-inputtext {
+  color: #fff;
+}
+/**
+table
+*/
+/* tr {
+  background: transparent !important;
+  border: 1px solid #15378e !important;
+}
+th {
+  border: 1px solid #15378e !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: #ffffff !important;
+}
+td {
+  text-align: center;
+  border: 1px solid #15378e !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+} */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+bidm-footer .layout-footer {
+  z-index: 99;
+}
+

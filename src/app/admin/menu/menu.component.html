@@ -1,0 +1,182 @@
+<div class="ui-g">
+    <p-confirmDialog></p-confirmDialog>
+    <div class="ui-g-12 ui-lg-12">
+        <!-- <div class="ui-g-12 ui-md-6 ui-lg-11">
+            <label>{{'admin.menuId' | translate}}：</label>
+            <input type="text" [(ngModel)]="menuId" pInputText>
+        </div>
+        <p-button style="float: right;" icon="fa fa-search" label="{{'admin.query' | translate}}" [disabled]="false"
+            (onClick)="getMenuInfo()"></p-button> -->
+            <bidm-search-bar [conditions]="searchConditions" (search)="searchClick($event)"></bidm-search-bar>
+    </div>
+
+    <div class="ui-g-12 ui-lg-12">
+        <p-panel class="bidm-no-border">
+            <p-header>
+                <div class="ui-helper-clearfix ui-g">
+                    <div class="ui-g-8" style="display: flex; align-items: center; padding: 0;"><span class="ui-panel-title">菜单列表</span></div>
+                    <div class="ui-g-4" style="padding: 0;">
+                        <p-button style="float: right;" icon="fa fa-plus" label="{{'admin.add' | translate}}" [disabled]="false"
+                            (onClick)="showDialog()"></p-button>
+                    </div>
+                </div>
+            </p-header>
+            <p-table [value]="menuInfoList" [autoLayout]="true" selectionMode="single" [(selection)]="menuInfo" dataKey="menuId">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>菜单名</th>
+                        <th>图标</th>
+                        <th>路由</th>
+                        <th>上级</th>
+                        <th>类型</th>
+                        <th>排序</th>
+                        <th>描述</th>
+                        <th style="width: 5em">{{'admin.state' | translate}}</th>
+                        <th style="width: 5em">操作</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-menuInfo>
+                    <tr>
+                        <td [pEditableColumn]="menuInfo" [pEditableColumnField]="'menuId'">{{menuInfo.menuId}}</td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="menuInfo.icon" (change)="updateMenuInfo(menuInfo)">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{menuInfo.icon}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="menuInfo.routerlink" (change)="updateMenuInfo(menuInfo)">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{menuInfo.routerlink}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="menuInfo.parentId" (change)="updateMenuInfo(menuInfo)">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{menuInfo.parentId}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="menuInfo.isLeaf" (change)="updateMenuInfo(menuInfo)"
+                                        placeholder="key Y or N,Y=Menu">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{menuInfo.isLeaf=='Y'?'页面':'菜单'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="menuInfo.sort" (change)="updateMenuInfo(menuInfo)">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{menuInfo.sort}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="menuInfo.desc" (change)="updateMenuInfo(menuInfo)">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{menuInfo.desc}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td style="text-align: center">
+                            <p-inputSwitch [(ngModel)]="menuInfo.state" (onChange)="updateMenuInfo(menuInfo)"></p-inputSwitch>
+                        </td>
+                        <td>
+                            <p-button (click)="deleteData(menuInfo)" icon="fa fa-trash" title="删除"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary" >
+                    <p-paginator [alwaysShow]="false" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions"
+                        (onPageChange)="paginate($event)"></p-paginator>
+                </ng-template>
+            </p-table>
+        </p-panel>
+    </div>
+</div>
+<p-dialog header="Title" [(visible)]="display" [width]="600" [minWidth]="400" (onHide)="dialogHide()">
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-2">
+                <label>菜单名:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText [(ngModel)]="dialogMenuInfo.menuId">
+            </div>
+            <div class="ui-g-2">
+                <label>图标:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText [(ngModel)]="dialogMenuInfo.icon">
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-2">
+                <label>路由:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText [(ngModel)]="dialogMenuInfo.routerlink">
+            </div>
+            <div class="ui-g-2">
+                <label>上级:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText [(ngModel)]="dialogMenuInfo.parentId">
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-2">
+                <label>类型:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText type="text" [(ngModel)]="dialogMenuInfo.isLeaf" placeholder="key Y or N,Y=Menu">
+            </div>
+            <div class="ui-g-2">
+                <label>排序:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText [(ngModel)]="dialogMenuInfo.sort">
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-2">
+                <label>描述:</label>
+            </div>
+            <div class="ui-g-4">
+                <input pInputText [(ngModel)]="dialogMenuInfo.desc">
+            </div>
+            <div class="ui-g-2">
+            </div>
+            <div class="ui-g-4">
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div>
+            <p-button label="Delete"></p-button>
+            <p-button label="Save" (onClick)="addMenuInfo()"></p-button>
+        </div>
+    </p-footer>
+</p-dialog>

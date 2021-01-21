@@ -1,0 +1,108 @@
+<div class="ui-g">
+        <p-confirmDialog></p-confirmDialog>
+    <div class="ui-g-12 ui-lg-12" style="border:1px solid lightgray; background-color:mintcream;height: 3.5em;">
+        <div class="ui-g-12 ui-md-6 ui-lg-11">
+            <label>{{'admin.roleId' | translate}}：</label>
+            <input type="text" [(ngModel)]="roleId" pInputText>
+        </div>
+        <p-button style="float: right;" icon="fa fa-search" label="{{'admin.query' | translate}}" [disabled]="false"
+            (onClick)="getRoleInfo()"></p-button>
+    </div>
+
+    <div class="ui-g-12 ui-lg-8">
+        <p-panel>
+            <p-header>
+                <div class="ui-helper-clearfix">
+                    <span class="ui-panel-title">角色列表</span>
+                    <p-button style="float: right;" icon="fa fa-plus" label="{{'admin.add' | translate}}" [disabled]="false"
+                        (onClick)="showDialog()"></p-button>
+                </div>
+            </p-header>
+            <p-table [value]="roleInfoList" [autoLayout]="true" selectionMode="single" [(selection)]="roleInfo" dataKey="roleId"
+                (onRowSelect)="onRowSelect($event)">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>{{'admin.roleId' | translate}}</th>
+                        <th>{{'admin.roleDesc' | translate}}</th>
+                        <th style="width: 5em">{{'admin.state' | translate}}</th>
+                        <th style="width: 5em">操作</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-roleInfo>
+                    <tr [pSelectableRow]="roleInfo">
+                        <td [pEditableColumn]="roleInfo" [pEditableColumnField]="'roleId'">{{roleInfo.roleId}}</td>
+
+                        <td [pEditableColumn]="roleInfo" [pEditableColumnField]="'label'">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input type="text" [(ngModel)]="roleInfo.desc" (change)="updateRoleInfo(roleInfo)">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{roleInfo.desc}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td style="text-align: center">
+                            <p-inputSwitch [(ngModel)]="roleInfo.state" (onChange)="updateRoleInfo(roleInfo)"></p-inputSwitch>
+                        </td>
+                        <td>
+                            <p-button (click)="deleteData(roleInfo)" icon="fa fa-trash" title="删除"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <p-paginator *ngIf="totalRecords>rows" [alwaysShow]="false" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions"
+                        (onPageChange)="paginate($event)"></p-paginator>
+                </ng-template>
+            </p-table>
+        </p-panel>
+    </div>
+    <div class="ui-g-12 ui-lg-4" *ngIf="roleInfo.roleId!=''">
+        <p-panel>
+            <p-header>
+                <div class="ui-helper-clearfix">
+                    <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">绑定菜单</span>
+                    <p-button style="float:right" icon="fa fa-check" label="{{'admin.save' | translate}}" (onClick)="saveRoleMenu()"></p-button>
+                    <p-message *ngIf="tip_!=''" severity="info" style="float:right;" text="{{tip_}}"></p-message>
+                </div>
+            </p-header>
+            <div style="max-height:50vh;overflow-y:scroll;width:100%">
+                <p-tree [value]="treeData" selectionMode="checkbox" [(selection)]="selectedNodes"
+                    [propagateSelectionUp]="true" [propagateSelectionDown]="true" (onNodeSelect)="nodeSelect($event)"
+                    (onNodeUnselect)="nodeUnselect($event)">
+                </p-tree>
+            </div>
+        </p-panel>
+    </div>
+</div>
+
+
+
+<p-dialog header="Title" [(visible)]="display" [width]="600" [minWidth]="400" (onHide)="dialogHide()">
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label>{{'admin.roleId' | translate}}:</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText [(ngModel)]="dialogRoleInfo.roleId">
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="desc">{{'admin.roleDesc' | translate}}:</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText [(ngModel)]="dialogRoleInfo.desc">
+            </div>
+        </div>
+
+    </div>
+    <p-footer>
+        <div>
+            <p-button label="Delete"></p-button>
+            <p-button label="Save" (onClick)="addRoleInfo()"></p-button>
+        </div>
+    </p-footer>
+</p-dialog>

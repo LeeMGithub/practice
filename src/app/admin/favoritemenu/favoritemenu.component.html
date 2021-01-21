@@ -1,0 +1,25 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+      <p-panel [style]="{'width':'650px'}">
+          <p-header>
+              <div class="ui-helper-clearfix">
+                      <span class="ui-panel-title">收藏夹管理</span>
+                  <p-button style="float:right" icon="fa fa-check" label="{{'admin.save' | translate}}" (onClick)="save()"></p-button>
+                  <p-message *ngIf="tip_!=''" severity="info" style="float:right;" text="{{tip_}}"></p-message>
+              </div>
+          </p-header>
+          <p-pickList [source]="unSelectList" [style]="{'width':'600px'}" [target]="selectMenuInfoList" [responsive]="true" [sourceStyle]="{'height':'400px'}"
+              [targetStyle]="{'height':'400px'}" sourceHeader="{{'admin.pick_available' | translate}}" targetHeader="{{'admin.pick_selected' | translate}}"
+              dragdrop="true" [showSourceControls]=false [showTargetControls]=false>
+              <ng-template let-menuInfo pTemplate="item">
+                  <div class="ui-helper-clearfix">
+                      <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{menuInfo.menuId}} {{menuInfo.desc==null
+                          ||
+                          menuInfo.desc==""?"":" ("+menuInfo.desc+")"}} </div>
+                  </div>
+              </ng-template>
+          </p-pickList>
+      </p-panel>
+  </div>
+
+</div>

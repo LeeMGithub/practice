@@ -1,0 +1,222 @@
+{
+    "items": [
+        {
+            "label": "Admin",
+            "icon": "label",
+            "items": [
+                {
+                    "label": "user",
+                    "routerLink": [
+                        "admin/user"
+                    ]
+                },
+                {
+                    "label": "role",
+                    "routerLink": [
+                        "admin/role"
+                    ]
+                },
+                {
+                    "label": "menu",
+                    "routerLink": [
+                        "admin/menu"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "ZhaShan",
+            "icon": "dashboard",
+            "items": [
+                {
+                    "label": "透明化展示-一级",
+                    "routerLink": [
+                        "dash-board-ui/type4"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "MES UI",
+            "icon": "view_list",
+            "items": [
+                {
+                    "label": "type1",
+                    "routerLink": [
+                        "mes-ui/type1"
+                    ]
+                },
+                {
+                    "label": "type2",
+                    "routerLink": [
+                        "mes-ui/type2"
+                    ]
+                },
+                {
+                    "label": "type3",
+                    "routerLink": [
+                        "mes-ui/type3"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "REPORT UI",
+            "icon": "desktop_mac",
+            "items": [
+                {
+                    "label": "report-type1",
+                    "routerLink": [
+                        "report-ui/type1"
+                    ]
+                },
+                {
+                    "label": "report-type2",
+                    "routerLink": [
+                        "report-ui/type2"
+                    ]
+                },
+                {
+                    "label": "report-type3",
+                    "routerLink": [
+                        "report-ui/type3"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "DASHBOARD UI",
+            "icon": "dashboard",
+            "items": [
+                {
+                    "label": "dashboard-type1",
+                    "routerLink": [
+                        "dash-board-ui/type1"
+                    ]
+                },
+                {
+                    "label": "dashboard-type2",
+                    "routerLink": [
+                        "dash-board-ui/type2"
+                    ]
+                },
+                {
+                    "label": "dashboard-type3",
+                    "routerLink": [
+                        "dash-board-ui/type3"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "BOE UI",
+            "icon": "refresh",
+            "items": [
+                {
+                    "label": "list",
+                    "icon": "sentiment_neutral",
+                    "routerLink": [
+                        "boe-ui/boe-list"
+                    ]
+                },
+                {
+                    "label": "grid",
+                    "icon": "grid_on",
+                    "routerLink": [
+                        "boe-ui/boe-grid"
+                    ]
+                },
+                {
+                    "label": "chart",
+                    "icon": "insert_chart",
+                    "routerLink": [
+                        "boe-ui/boe-chart"
+                    ]
+                },
+                {
+                    "label": "dashboard",
+                    "icon": "dashboard",
+                    "routerLink": [
+                        "boe-ui/boe-dashboard"
+                    ]
+                },
+                {
+                    "label": "Dashboard 1",
+                    "routerLink": [
+                        "boe-ui/type4"
+                    ]
+                },
+                {
+                    "label": "Dashboard 2",
+                    "routerLink": [
+                        "boe-ui/type5"
+                    ]
+                },
+                {
+                    "label": "Dashboard 3",
+                    "routerLink": [
+                        "boe-ui/type6"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "BOE Pages",
+            "icon": "cloud",
+            "items": [
+                {
+                    "label": "TEST",
+                    "routerLink": [
+                        "pages/test"
+                    ]
+                },
+                {
+                    "label": "TEST1",
+                    "routerLink": [
+                        "pages/test1"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "ICONS",
+            "icon": "search",
+            "items": [
+                {
+                    "label": "Font Awesome",
+                    "icon": "sentiment_neutral",
+                    "routerLink": [
+                        "icons/fontawesome"
+                    ]
+                },
+                {
+                    "label": "Material",
+                    "icon": "sentiment_neutral",
+                    "routerLink": [
+                        "icons/material"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Rule",
+            "icon": "dashboard",
+            "items": [
+                {
+                    "label": "Create",
+                    "icon": "sentiment_neutral",
+                    "routerLink": [
+                        "rule/rulecreate/rulemanagement"
+                    ]
+                },
+                {
+                    "label": "userlimit",
+                    "icon": "sentiment_neutral",
+                    "routerLink": [
+                        "rule/userlimit/userlimitmanagement"
+                    ]
+                }
+            ]
+        }
+    ]
+}

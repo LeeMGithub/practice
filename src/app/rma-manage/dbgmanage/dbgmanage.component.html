@@ -1,0 +1,327 @@
+<div class="rmadbgmangecontainer">
+  <div class="wrap">
+    <header
+      (click)="gohome($event)"
+      class="header"
+      id="header"
+      style="background: url(../../../assets/picture/top.png) no-repeat center"
+    >
+      DBG RMA比例数据管理
+    </header>
+    <section>
+      <div class="line"></div>
+      <div class="selec">
+        <!-- <label>日期:
+          <p-calendar [(ngModel)]="date" [ngModelOptions]="{ standalone: true }" view="month" [locale]="cn"
+            [yearNavigator]="true" yearRange="2000:2030" dateFormat="yy-mm" [readonlyInput]="true"
+            inputId="monthpicker">
+          </p-calendar>
+        </label> -->
+        <div>
+          <span>时间：</span>
+          <!-- <p-cascadeSelect
+            [(ngModel)]="selectedCity1"
+            [options]="countries"
+            optionLabel="code"
+            optionGroupLabel="name"
+            [optionGroupChildren]="['children', 'cities']"
+            [style]="{ minWidth: '2.443629rem', color: '#000' }"
+            placeholder="时间维度"
+          ></p-cascadeSelect> -->
+          <p-cascadeSelect
+            [(ngModel)]="selectedCity1"
+            [options]="countries"
+            optionLabel="value"
+            optionGroupLabel="label"
+            [optionGroupChildren]="['children', 'cChildren']"
+            [style]="{ minWidth: '2.443629rem', color: '#000' }"
+            placeholder="时间维度"
+          ></p-cascadeSelect>
+        </div>
+        <div>
+          <p-button label="产品状态" style="margin-right: 60px"></p-button>
+          <p-button label="返品状态"></p-button>
+        </div>
+        <p-button
+          label="查询"
+          (onClick)="queryClickMethod()"
+          style="float: right"
+        ></p-button>
+      </div>
+    </section>
+    <section>
+      <div class="echart-item">
+        <div
+          class="echart"
+          echarts
+          [options]="option1"
+          [theme]="echartTheme"
+        ></div>
+        <div
+          class="echart"
+          echarts
+          [options]="option2"
+          [theme]="echartTheme"
+        ></div>
+        <div
+          class="echart"
+          echarts
+          [options]="option3"
+          [theme]="echartTheme"
+        ></div>
+      </div>
+      <div class="echart-item">
+        <div
+          style="height: 300px; width: 100%"
+          echarts
+          [options]="option4"
+          [theme]="echartTheme"
+        ></div>
+      </div>
+      <div class="echart-item">
+        <div
+          style="height: 300px; width: 100%"
+          echarts
+          [options]="option4"
+          [theme]="echartTheme"
+        ></div>
+      </div>
+      <div style="border: 1px solid #2a408e;">
+        <textarea style="width: 100%;height: 60px;background-image: none;" [rows]="5" [cols]="60" pInputTextarea autoResize="autoResize" readonly [(ngModel)]="property"></textarea>
+      </div>
+    </section>
+    <section>
+      <div class="table">
+        <div class="table-item" style="width: 58%">
+          <p-table
+            [columns]="cols"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="230px"
+          >
+            <ng-template pTemplate="caption">RMA比例TOP类型表</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 10%" />
+                <col style="width: 10%" />
+                <col style="width: 15%" />
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 15%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="table-item" style="width: 42%">
+          <p-table
+            [columns]="cols1"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="100px"
+          >
+            <ng-template pTemplate="caption">MBL重点客户数据情况</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <p-table
+            [columns]="cols1"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="80px"
+          >
+            <ng-template pTemplate="caption">MBL重点客户数据情况</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <p-table
+            [columns]="cols1"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="80px"
+          >
+            <ng-template pTemplate="caption">MBL重点客户数据情况</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="table-item" style="width: 33.3%;height: 300px;">
+          <p-table
+            [columns]="cols1"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="400px"
+          >
+            <ng-template pTemplate="caption">MBL重点客户数据情况</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="table-item" style="width: 33.3%;height: 300px;">
+          <p-table
+            [columns]="cols1"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="400px"
+          >
+            <ng-template pTemplate="caption">MBL重点客户数据情况</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="table-item" style="width: 33.3%;height: 300px;">
+          <p-table
+            [columns]="cols1"
+            [value]="products"
+            [resizableColumns]="true"
+            [scrollable]="true"
+            scrollHeight="400px"
+          >
+            <ng-template pTemplate="caption">MBL重点客户数据情况</ng-template>
+            <ng-template pTemplate="colgroup">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 35%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{ rowData[col.field] }}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

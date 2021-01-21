@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="ArrayA">
+		<rect x="10" y="10" width="90" height="80" stroke="#000" stroke-width="3" style="fill: var(--left-1-color, #C0C0C0)" />
+		<rect x="18" y="20" width="74" height="60" stroke="#000" stroke-width="1" style="fill: var(--left-2-color, #C0C0C0)" />
+		<rect x="100" y="10" width="30" height="80" stroke="#000" stroke-width="3" style="fill: var(--left-3-color, #C0C0C0)" />
+		<rect x="106" y="65" width="15" height="20" stroke="#000" stroke-width="1" style="fill: var(--left-4-color, #C0C0C0)" />
+		<rect x="130" y="10" width="50" height="30" stroke="#000" stroke-width="3" style="fill: var(--up-1-color, #C0C0C0)" />
+		<rect x="180" y="10" width="45" height="36" stroke="#000" stroke-width="3" style="fill: var(--up-2-color, #C0C0C0)" />
+		<rect x="225" y="10" width="120" height="30" stroke="#000" stroke-width="3" style="fill: var(--up-3-color, #C0C0C0)" />
+		<rect x="110" y="20" width="225" height="10" stroke="#000" stroke-width="1" style="fill: var(--up-4-color, #C0C0C0)" />
+		<rect x="130" y="60" width="110" height="30" stroke="#000" stroke-width="3" style="fill: var(--down-1-color, #C0C0C0)" />
+		<rect x="240" y="50" width="35" height="40" stroke="#000" stroke-width="3" style="fill: var(--down-2-color, #C0C0C0)" />
+		<rect x="275" y="60" width="70" height="30" stroke="#000" stroke-width="3" style="fill: var(--down-3-color, #C0C0C0)" />
+		<rect x="285" y="68" width="50" height="14" stroke="#000" stroke-width="1" style="fill: var(--down-4-color, #C0C0C0)" />
+		<rect x="345" y="10" width="50" height="80" stroke="#000" stroke-width="3" style="fill: var(--right-1-color, #C0C0C0)" />
+		<rect x="355" y="20" width="30" height="60" stroke="#000" stroke-width="1" style="fill: var(--right-2-color, #C0C0C0)" />
+	</symbol>
+</svg>

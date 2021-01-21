@@ -1,0 +1,151 @@
+::ng-deep ::-webkit-scrollbar {
+  display: none;
+}
+.managecontainer {
+  color: aliceblue;
+  background-color: #141E37;
+  padding: 0 0.25rem 0.25rem 0.25rem;
+}
+.managecontainer .header {
+  text-align: center;
+  font-size: 0.375rem;
+  color: #ffffff;
+  height: 0.875rem;
+  line-height: 0.875rem;
+}
+.managecontainer .selec {
+  height: 0.702781rem;
+  padding: .087848rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.managecontainer .line {
+  height: 1px;
+  /* background-color: red; 不支持线性的时候显示 */
+  background-image: linear-gradient(to right, rgba(56, 127, 251, 0), #387ffb, rgba(56, 127, 251, 0));
+}
+.managecontainer .manage-trend {
+  border: 1px solid #2a408e;
+  border-radius: 10px;
+  padding: .087848rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 10px 0;
+  /* margin-top: .175695rem; */
+  position: relative;
+  border-collapse: collapse;
+}
+.managecontainer .manage-trend .echart1 {
+  height: 4rem;
+  padding-bottom: 10px ;
+}
+.managecontainer .manage-detail {
+  border: 1px solid #2a408e;
+  border-radius: 10px;
+  margin-top: .175695rem;
+}
+.managecontainer .manage-detail .detail-echart {
+  display: flex;
+}
+.managecontainer .manage-detail .detail-echart .detail-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-right: .175695rem;
+  /* padding: 5px 0; */
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item .items {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* border: 1px solid #15378e; */
+  box-sizing: border-box;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item .items .top {
+  flex: 20%;
+  width: 1.25rem;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item .items .down {
+  flex: 80%;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item .items .echart2 {
+  border-radius: 10px;
+  margin: 0 auto;
+  height: 3rem;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item .items .panel,
+.managecontainer .manage-detail .detail-echart .detail-item .item .items .module {
+  font-family: PingFangSC-Regular;
+  font-size: 0.175rem;
+  color: #ffffff;
+  line-height: 2rem;
+  height: 2rem;
+  width: 1rem;
+  border-radius: 2px;
+  text-align: center;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item .items .panel {
+  line-height: 2rem;
+  height: 2rem;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item:first-child {
+  flex: 40%;
+  height: 100%;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .item:last-child {
+  flex: 60%;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .echart2 {
+  border-radius: 10px;
+  margin: 0 auto;
+  height: 4.5rem;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .headTr {
+  padding: 0px 1px 0px 1px;
+  margin: 0px 1px 0px 1px;
+  font-size: 4px;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .headTr th {
+  font-size: 0.175rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ffffff !important;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .headTr .td {
+  text-align: center;
+  border: 1px solid #15378e !important;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .bodyTr {
+  font-size: 0.175rem;
+  border: 1px solid #15378e !important;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .bodyTr .td {
+  text-align: center;
+  border: 1px solid #15378e !important;
+}
+.managecontainer .manage-detail .detail-echart .detail-item .bodyBackground {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: 1px solid #15378e !important;
+}
+.managecontainer .detailFont {
+  color: red;
+}
+.managecontainer tr {
+  background: transparent!important;
+  border: 1px solid #15378e !important;
+}
+.managecontainer th {
+  border: 1px solid #15378e !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: #ffffff !important;
+}
+.managecontainer td {
+  text-align: center;
+  border: 1px solid #15378e !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}

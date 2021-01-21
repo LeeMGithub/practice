@@ -1,0 +1,26 @@
+.ui-table table{
+    text-align: center;
+}
+.special_input{
+    background: transparent no-repeat;
+    background-image: linear-gradient(to bottom, #238ACB, #238ACB), linear-gradient(to bottom, #BCBCBC, #BCBCBC);
+    background-size: 0 2px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
+    transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    border-width: 0;
+    padding: 2px;
+    font-size: 1em;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px; 
+    width: 120px;
+}
+.special_input:focus, body .ui-inputtext.ui-state-focus {
+    border-width: 0;
+    background-size: 100% 2px, 100% 1px;
+    outline: none;
+    padding-bottom: 2px; 
+}
+.special_input:disabled {
+    border-bottom: 1px dotted; 
+}

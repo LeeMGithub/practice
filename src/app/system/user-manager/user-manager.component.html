@@ -1,0 +1,60 @@
+<div class="ui-g">
+  <div class="ui-g-12 ui-g-nopad" style="background-color:white;">
+    <div class="ui-g-4">
+      <label style="font-size: 18px;">用户账号:</label>
+      <input type="text" style="height:23px" [(ngModel)]="account" class="special_input"/>
+    </div>
+    <div class="ui-g-8">
+      <p-button label="批量导入" (onClick)="importClickMethod()" style="float: right;"></p-button>
+      <p-button label="批量导出" (onClick)="exportExecl()" style="float: right; margin-right: 5px;"></p-button>
+      <p-button label="重置权限" [disabled]="isTableSelected" (onClick)="resetMenthod()" style="float: right; margin-right: 5px;"></p-button>
+      <p-button label="关联现地" [disabled]="isTableSelected" (onClick)="userLinkMenuSiteMethod()"
+        style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="关联菜单" [disabled]="isTableSelected" (onClick)="userLinkMenuMethod()"
+        style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="关联角色" [disabled]="isTableSelected" (onClick)="userLinkRoleMethod()"
+        style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="删除" [disabled]="isTableSelected" (onClick)="deleteClickMethod()"
+        style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="新增" (onClick)="addClickMethod()" style="float: right;margin-right: 5px;"></p-button>
+      <p-button label="查询" (onClick)="queryClickMethod()" style="float: right;margin-right: 5px;"></p-button>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" style="padding-top:5px;">
+    <p-panel class="bidm-no-border" header="用户信息">
+      <p-table [columns]="cols" [value]="pageData" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+        (onRowUnselect)="onRowUnselect($event)">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [style.width]="col.width">
+              {{col.header}}
+              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+              </p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <p-paginator [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)"></p-paginator>
+    </p-panel>
+  </div>
+  <p-dialog header="系统提示" [(visible)]="systemPromptState" [modal]="true" [responsive]="true" [width]="350">
+    <span style="font-size: 18px;color:red;">您查询的用户不存在, 请确认您输入的用户账号是否正确。</span>
+  </p-dialog>
+  <!-- 新增用户dialog -->
+  <app-add-new-user></app-add-new-user>
+  <!-- 关联角色dialog -->
+  <app-user-link-role></app-user-link-role>
+  <!-- 关联菜单dialog -->
+  <app-user-link-menu></app-user-link-menu>
+  <!-- 关联现地dialog -->
+  <app-user-link-menu-site></app-user-link-menu-site>
+  <app-batch-import (reSearch)="statehHandler($event)"></app-batch-import>
+</div>

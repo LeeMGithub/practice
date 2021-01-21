@@ -1,0 +1,31 @@
+.er_label{
+    font-size: 16px;
+    padding-left: 30px;
+}
+.er_input{
+    width: 173px;
+    height: 30px;
+    font-size: 15px;
+    float: right;
+    margin-right: 30px;
+}
+.er_textarea{
+    width: 173px;
+    height: 80px;
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+}
+
+.er_bt1{
+    float: left;
+    margin-left: 203px;
+}
+.er_bt2{
+    float: left;
+    margin-left: 10px;
+}
+/* 验证 */
+.ng-invalid:not(form)  {
+    border: 2px solid red;
+}

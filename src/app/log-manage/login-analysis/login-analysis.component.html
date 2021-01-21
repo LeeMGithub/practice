@@ -1,0 +1,24 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-g-nopad" style="background-color:white;">
+        <div class="ui-g-10">
+            <!-- <app-calendar [startYear]="2016" (dateClickHandle)="dateClickHandle($event)"></app-calendar> -->
+        </div>
+        <div class="ui-g-2">
+            <p-button label="查询" (onClick)="queryClickMethod()" style="float:right;"></p-button>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-6" style="padding-left:0;">
+            <div echarts [options]="option1" [theme]="echartTheme" [loading]="loading1"></div>
+        </div>
+        <div class="ui-g-6" style="padding-right:2px;padding-left:2px;">
+            <div echarts [options]="option2" [theme]="echartTheme" [loading]="loading2"></div>
+        </div>
+        <div class="ui-g-6" style="padding-left:0;padding-top:3px;">
+            <div echarts [options]="option3" [theme]="echartTheme" [loading]="loading3"></div>
+        </div>
+        <div class="ui-g-6" style="padding-right:2px;padding-left:2px;padding-top:3px;">
+            <div echarts [options]="option4" [theme]="echartTheme" [loading]="loading4"></div>
+        </div>
+    </div>
+</div>

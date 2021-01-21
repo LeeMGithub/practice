@@ -1,0 +1,59 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <div class="text"> 
+      <ul class="ui">
+         <li> <i class="material-icons">desktop_windows</i></li>
+          <li class="desktop_">最近访问</li>     
+      </ul>
+    </div>
+  </div>
+  <div *ngFor="let menu of topMenuInfoList">
+    <div style="margin: 15px 15px;">
+      <a href="#{{path_}}/{{menu.routerlink}}">
+        <p-card styleClass="ui-card-shadow" [style]="{'width':'155px','height':'95px'}" styleClass="ui-card-shadow">
+          <p-header>
+            <div style="margin-top:5px;margin-left:10px;">{{menu.menuId}}</div>
+          </p-header>
+          <span class="ptext">{{menu.parentId}}</span>
+        </p-card>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="ui-g">
+  <div class="ui-g-12">
+    <hr style="    border: none;border-top: 2px ridge #6bb6e6">
+  </div>
+</div>
+
+
+<div class="ui-g">
+
+  <div class="ui-g-12">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <div class="text"> 
+            <ul class="ui">
+               <li> <i class="material-icons">desktop_windows</i></li>
+                <li class="desktop_">快速访问(收藏夹)</li>     
+            </ul>
+          </div>
+      </div>
+      <div *ngFor="let menu of favoriteMenuList">
+        <div class="" style="margin: 15px 15px;">
+          <a href="#{{path_}}/{{menu.routerlink}}">
+            <p-card styleClass="ui-card-shadow" [style]="{'width':'155px','height':'95px'}" styleClass="ui-card-shadow">
+              <p-header>
+                <div style="margin-top:5px;margin-left:10px;">{{menu.menuId}}</div>
+              </p-header>
+              <span class="ptext">{{menu.parentId}}</span>
+            </p-card>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

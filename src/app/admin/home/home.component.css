@@ -1,0 +1,24 @@
+.text{
+    color: #238acb;
+    font-weight: 600;
+}
+
+.ptext{
+    color: #7c93d1;
+    font-weight: 550;
+}
+
+.ui{
+    list-style: none;
+    margin:0;
+    padding:0;
+    height: 25px;
+}
+.ui li{
+float: left;/*该处换为display:inline-block;同样效果*/
+}
+
+.desktop_{
+    margin-left: 4px;
+    margin-top: 1px;
+}
