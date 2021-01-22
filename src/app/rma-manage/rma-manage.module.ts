@@ -13,9 +13,10 @@ import { DbgmanageComponent } from './dbgmanage/dbgmanage.component';
 import { ProductmanageComponent } from './productmanage/productmanage.component';
 import { SitemanageComponent } from './sitemanage/sitemanage.component';
 import { DetailmanageComponent } from './detailmanage/detailmanage.component';
+import { RmaContainerComponent } from './component/rmacontainer/rmacontainer.component';
 
 @NgModule({
-  declarations: [DbgmanageComponent, ProductmanageComponent, SitemanageComponent, DetailmanageComponent],
+  declarations: [RmaContainerComponent,DbgmanageComponent, ProductmanageComponent, SitemanageComponent, DetailmanageComponent],
   imports: [
     CommonModule,
     TableModule,

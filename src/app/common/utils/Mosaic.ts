@@ -1,10 +1,28 @@
 import { dpr } from './index';
-export function setOption4(respText: object, title: string,legend:string[]) {
-  let { grids, xAxes, yAxes, series } = formateOption(respText,legend)
+//第一种拼接图
+const baseColorList = [
+  '#046CFD',
+  '#2BB88A',
+  '#322BC6',
+  '#2BA3C6',
+  '#7D2BC6',
+  '#2BC684',
+  '#C8E573',
+  '#CE7C81',
+  '#FFC400',
+  '#FF69B4',
+  '#00FFFF',
+  '#D4F2E7',
+  '#ADFF2F',
+  '#FFFF00',
+  '#FF7F50',
+]
+export function setOption4(data: object) {
+  let { grids, xAxes, yAxes, series } = formateOption(data)
   return {
     // color: ['#046CFD', '#2BB88A', '#FFC400', '#2BA3C6', '#7D2BC6'],
     title: {
-      text: title,
+      text: data['title'],
       top: '2%',
       left: 'center',
       textStyle: {
@@ -19,16 +37,16 @@ export function setOption4(respText: object, title: string,legend:string[]) {
         type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
       }
     },
-    // legend: {
-    //     data: ['copq'],
-    //     right: '5%',
-    //     itemWidth: 12,
-    //     itemHeight: 6,
-    //     textStyle: {
-    //         color: '#ffffff',
-    //         fontSize: 10,
-    //     }
-    // },
+    legend: {
+      data: data['legend'],
+      right: '5%',
+      itemWidth: 12,
+      itemHeight: 6,
+      textStyle: {
+        color: '#ffffff',
+        fontSize: 10,
+      }
+    },
     grid: grids,
     xAxis: xAxes,
     yAxis: yAxes,
@@ -36,8 +54,10 @@ export function setOption4(respText: object, title: string,legend:string[]) {
   };
 }
 //TODO:格式化生成option部分选项，拼接图
-function formateOption(respText: object,legend:string[]) { //max  interval调整
+function formateOption(data: object) { //max  interval调整
   //处理返回的数据
+  let respText = data['data']
+  let echartType = data['eType']
   let xKeys = Object.keys(respText)
   let sitelist = []
   let arr = xKeys.map(item => {
@@ -52,7 +72,7 @@ function formateOption(respText: object,legend:string[]) { //max  interval调整
     let a = 100 - defVal
     let b = 100 - defVal * 2
     let c = (1 / sitelist.length) * arr[i]['site'].length * b
-    let randomstack = Math.random()
+    // let randomstack = Math.random()
     //处理grid 宽  left right
     if (i === 0) {
       left = defVal;
@@ -118,6 +138,7 @@ function formateOption(respText: object,legend:string[]) { //max  interval调整
       nameLocation: 'center',
       nameTextStyle: {
         fontWeight: 'bold',
+        fontSize: dpr(12),
         color: '#fff'
       },
       nameGap: -5,
@@ -125,7 +146,7 @@ function formateOption(respText: object,legend:string[]) { //max  interval调整
       data: [''],
 
       axisTick: {
-        length: dpr(40),
+        length: dpr(30),
         inside: true,
         lineStyle: {
           color: '#1D3A7B'
@@ -211,9 +232,9 @@ function formateOption(respText: object,legend:string[]) { //max  interval调整
           gridIndex: i,
           type: 'value',
           splitNumber: 4,
-          max: function (value) {
-            return parseInt(value.max) + 100
-          },
+          // max: function (value) {
+          //   return parseInt(value.max) + 100
+          // },
           min: 0,
           splitLine: {
             show: false
@@ -311,37 +332,20 @@ function formateOption(respText: object,legend:string[]) { //max  interval调整
         });
       }
     }
-    series.push(...buildSeries(legend, i, arr))
-    // console.log(series);
+    series.push(...buildSeries(echartType, i, arr))
   }
   return { grids, xAxes, yAxes, series }
 }
-function buildSeries(legend: any[], i, arr) {
-  const baseColorList = [
-    '#046CFD',
-    '#2BB88A',
-    '#322BC6',
-    '#2BA3C6',
-    '#7D2BC6',
-    '#2BC684',
-    '#C8E573',
-    '#CE7C81',
-    '#FFC400',
-    '#FF69B4',
-    '#00FFFF',
-    '#D4F2E7',
-    '#ADFF2F',
-    '#FFFF00',
-    '#FF7F50',
-  ]
+function buildSeries(echartType: string[], i, arr) {
+
   let randomstack = Math.random()
-  const barSeries = legend.map((val, index) => {
+  const barSeries = echartType.map((val, index) => {
     let barSerie = {};
-    if (index === legend.length - 1) {
+    if (val['type'] === 'line') {
       barSerie = {
         xAxisIndex: i * 2,
-        yAxisIndex: i * 2 + 1,
-        name: val,
+        yAxisIndex: echartType.length === 1 ? i * 2 : i * 2 + 1,
+        name: val['yname'],
         type: 'line',
         data: arr[i]['rate'].map((item: string) => {
           return parseFloat(item)
@@ -372,15 +376,19 @@ function buildSeries(legend: any[], i, arr) {
           }
         }
       }
-    } else {
+
+    } else if (val['type'] === 'bar') {
       barSerie = {
         xAxisIndex: i * 2,
         yAxisIndex: i * 2,
         stack: randomstack,
-        name: val,
+        name: val['yname'],
         barWidth: dpr(20),
         type: 'bar',
-        data: [20, 45, 46, 43],
+        data: arr[i][val['data']].map((item: string) => {
+          return parseFloat(item)
+        }),
+        // data:[1.2,1.1,1.3,1.4,1.5],
         barGap: '-100%',
         label: {
           show: true,
@@ -403,8 +411,8 @@ function buildSeries(legend: any[], i, arr) {
   });
   return barSeries
 }
-
-export function setOption44(res) {
+//第二种拼接图 问题点 分割点多了之后会出现阴影短线
+export function setOption44(res, title) {
   let xKeys = Object.keys(res)
   let ratelist = []
   let sitelist = []
@@ -419,7 +427,6 @@ export function setOption44(res) {
     ratelist.push(...res[item]['rate'])
     len.push(res[item]['site'].length + len[index])
   })
-  // console.log(ratelist);
   let arr = len.map(item => {
     return {
       gt: item - 1,
@@ -452,9 +459,9 @@ export function setOption44(res) {
     }
     return obj
   })
-  this.option4 = {
+  let option4 = {
     title: {
-      text: `{a| DBG  ${new Date().getMonth() + 1}月}BU别COPQ对比`,
+      text: title,
       top: '2%',
       textStyle: {
         color: '#ffffff',
@@ -629,4 +636,188 @@ export function setOption44(res) {
       ...series
     ]
   };
+  return option4
+}
+//柱状堆叠图
+export function setStackOption(params) {
+  let series = buildStackSeries(params['data'])
+  // setOption() {
+  let option = {
+    // color: ['#046CFD', '#2BB88A', '#FFC400', '#2BA3C6', '#7D2BC6'],
+    title: {
+      text: params['title'],
+      textStyle: {
+        color: '#ffffff'
+      },
+    },
+    grid: {
+      // top:'-50%',
+      left: '2%',
+      right: '5%',
+      bottom: '3%',
+      containLabel: true
+    },
+    tooltip: {
+      trigger: 'axis',
+      textStyle: {
+        color: '#fff'
+      },
+      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    // visualMap: {
+    //   show: false,
+    //   dimension: 0,
+    //   pieces: [{
+    //     gt: 1,
+    //     lt: 2
+    //   }
+    //   ]
+    //   , outOfRange: { opacity: 1 }
+    //   , inRange: { opacity: 0 }
+    // },
+    // toolbox: {
+    //   show: true,
+    //   iconStyle: {
+    //     // color:'red',
+    //     // borderColor:'#22bb22'
+    //   },
+    //   feature: {
+    //     dataView: {
+    //       show: true,
+    //       readOnly: true,
+    //       // textColor:'#fff',
+    //       // backgroundColor :'#22bb22'
+    //     },
+    //     magicType: {
+    //       show: true,
+    //       type: ['line', 'bar']
+    //     },
+    //     restore: {
+    //       show: true
+    //     },
+    //     saveAsImage: {
+    //       show: true
+    //     }
+    //   },
+    //   right: '20',
+    //   orient: 'vertical'
+    // },
+    legend: {
+      data: params['legend'],
+      itemWidth: dpr(20),
+      itemHeight: dpr(10),
+      textStyle: {
+        color: '#fff',
+        fontSize: dpr(10),
+      }
+    },
+    // legend:{},
+    dataset: {
+      // dimensions: params['dimensions'],
+      dimensions: null,
+      source: params['data'],
+    },
+    // xAxis: {type: 'category'},
+    // yAxis: {},
+    xAxis: [
+      {
+        type: 'category',
+        axisPointer: {
+          type: 'shadow'
+        },
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: 'white',
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#fff',
+            fontSize: 10
+          }
+        },
+        axisTick: {
+          show: false,
+          inside: false,
+        },
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        min: 0,
+        splitNumber: 3,
+        axisLabel: {
+            formatter: '{value}',
+            color: '#ffffff',
+            fontSize: dpr(10)
+        },
+        axisLine: {
+            lineStyle: {
+                color: 'rgba(0, 0, 0, 0)' // 线的颜色是透明的
+            }
+        },
+        axisTick: {
+            show: false,
+            inside: false
+        },
+        splitLine: {
+            show: false    // 去掉网格线
+        },
+    },
+    ],
+    series: series
+  };
+  return option
+  // }
+}
+function buildStackSeries(data) {
+  let stack = Math.random()
+  let arr = data.map((val,index)=>{
+    if(index === data.length-1 || index ===data.length-2){
+      return {
+        type: 'line',
+        stack: stack,
+        label: {
+          normal: {
+            show: true,
+            position: 'inside',
+            textStyle: {
+              color: '#fff'
+            }
+          }
+        },
+        itemStyle: {
+          color: baseColorList[index]
+        },
+        // data: [11, 22, 33]
+      }
+    }else{
+      return {
+        type: 'bar',
+        stack: stack,
+        label: {
+          normal: {
+            show: true,
+            position: 'inside',
+            textStyle: {
+              color: '#fff'
+            }
+          }
+        },
+        barWidth: dpr(20),
+        itemStyle: {
+          color: baseColorList[index]
+        },
+        // data: [11, 22, 33]
+      }
+    }
+
+  })
+  console.log(arr);
+
+  return arr
 }

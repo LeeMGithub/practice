@@ -1,8 +1,9 @@
 <div class="rma_container">
-    <header class="rma_header"></header>
+    <header class="rma_header">{{ headTitle }}</header>
     <div class="line"></div>
     <div class="search">
         <ng-content select="[name=search]"></ng-content>
+
     </div>
     <div class="rma_content">
         <ng-content select="[name=content]"></ng-content>

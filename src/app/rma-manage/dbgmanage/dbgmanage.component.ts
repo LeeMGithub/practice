@@ -74,6 +74,7 @@ export class DbgmanageComponent implements OnInit {
     console.log(this.countries);
 
     this.getBUData()
+    this.getRemark()
 
 
     this.cols = [
@@ -370,53 +371,36 @@ export class DbgmanageComponent implements OnInit {
     // const url = 'api/copq/contrast/sbu?date=2020&terrain=B1'
     this.http.get(url).subscribe(res => {
       if (Object.keys(res).length) {
-        let title = `DBG RMA比例 各产品类型整体趋势   物权工厂`
-        let legend = ['COPQ']
-        this.option4 = setOption4(res,title,legend)
-        // this.setOption44(res)
+        let data = {
+          data: res,
+          eType: [
+            // {type:'bar',yname:'比例1',data:''},
+            // {type:'bar',yname:'比例2',data:[20, 45, 46, 43]},
+            { type: 'line', yname: 'COPQ', data: 'rate' }],
+          title: `DBG RMA比例 各产品类型整体趋势   物权工厂`,
+          legend: ['比例1', '比例2', 'COPQ']
+        }
+        this.option4 = setOption4(data)
+        console.log(this.option4);
       } else {
         this.option4 = this.defaultoption
       }
     })
   }
-  // //TODO:拼接双坐标
-  // setOption4(respText: object,title:string) {
-  //   let { grids, xAxes, yAxes, series } = this.formateOption(respText)
-  //   return {
-  //     // color: ['#046CFD', '#2BB88A', '#FFC400', '#2BA3C6', '#7D2BC6'],
-  //     title: {
-  //       text: title,
-  //       top: '2%',
-  //       left:'center',
-  //       textStyle: {
-  //         color: '#ffffff',
-  //         fontSize: dpr(16),
-  //         rich: { a: { color: '#fd7502', fontSize: dpr(16), fontWeight: 'bold' } }
-  //       }
-  //     },
-  //     tooltip: {
-  //       trigger: 'axis',
-  //       axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-  //         type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-  //       }
-  //     },
-  //     // legend: {
-  //     //     data: ['copq'],
-  //     //     right: '5%',
-  //     //     itemWidth: 12,
-  //     //     itemHeight: 6,
-  //     //     textStyle: {
-  //     //         color: '#ffffff',
-  //     //         fontSize: 10,
-  //     //     }
-  //     // },
-  //     grid: grids,
-  //     xAxis: xAxes,
-  //     yAxis: yAxes,
-  //     series: series,
-  //   };
-  // }
-
+  //TODO:备注remark
+  getRemark() {
+    const url = 'api/rma/part1/reason/list'
+    this.http.get(url).subscribe(res => {
+      console.log(res);
+      let data: any = res
+      let str = ''
+      data.map((val, index) => {
+        //组合reason
+        str = str + `${index + 1}.${val.reason}`
+      })
+      this.property = str
+    })
+  }
 
   // updateRowGroupMetaData(params:any){
   //   this.rowGroupMetadata = {};

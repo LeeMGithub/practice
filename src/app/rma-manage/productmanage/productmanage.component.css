@@ -1,0 +1,24 @@
+::-webkit-scrollbar {
+    display: none;
+  }
+.pro_search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.search_list{
+    display: flex;
+}
+.search_list li{
+    margin: 0 .175695rem
+}
+.pro_item{
+    border: 1px solid #2a408e;
+    height: 3.5rem;
+    border-radius: 10px;
+    /* margin-bottom: .175695rem */
+}
+.pro_item:nth-last-child(1){
+    height: 3.5rem;
+}

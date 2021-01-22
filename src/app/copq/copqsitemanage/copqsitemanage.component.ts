@@ -192,9 +192,10 @@ export class CopqsitemanageComponent implements OnInit {
                         show: true,
                         position: 'inside',
                         fontSize: dpr(10),
-                        formatter: (param) => {
-                            return param.value + '%';
-                        },
+                        formatter:'{c}%'
+                        // formatter: (param) => {
+                        //     return param.value + '%';
+                        // },
                     },
                     itemStyle: {
                         color: '#046CFD'
@@ -212,9 +213,10 @@ export class CopqsitemanageComponent implements OnInit {
                         show: true,
                         position: 'inside',
                         fontSize: dpr(10),
-                        formatter: (param) => {
-                            return param.value + '%';
-                        },
+                        formatter:'{c}%'
+                        // formatter: (param) => {
+                        //     return param.value + '%';
+                        // },
                     },
                     itemStyle: {
                         color: '#2BB88A'
@@ -230,9 +232,10 @@ export class CopqsitemanageComponent implements OnInit {
                         show: true,
                         position: 'top',
                         fontSize: dpr(10),
-                        formatter: (param) => {
-                            return param.value + '%';
-                        },
+                        formatter:'{c}%',
+                        // formatter: (param) => {
+                        //     return param.value + '%';
+                        // },
                         textStyle: {
                             color: '#ffffff'
                         }
@@ -252,9 +255,10 @@ export class CopqsitemanageComponent implements OnInit {
                         show: true,
                         position: 'top',
                         fontSize: dpr(10),
-                        formatter: (param) => {
-                            return param.value + '%';
-                        },
+                        formatter:'{c}%',
+                        // formatter: (param) => {
+                        //     return param.value + '%';
+                        // },
                         textStyle: {
                             color: '#ffffff'
                         }

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormatDateService } from '../../service/format-date.service';
 import { MenuClickService } from 'src/app/service/menu-click.service';
 import { dpr } from '../../common/utils/index';
-import { setOption4 } from '../../common/utils/Mosaic';
+import { setOption4,setOption44 } from '../../common/utils/Mosaic';
 @Component({
     selector: 'app-copqmanage',
     templateUrl: './copqmanage.component.html',
@@ -85,6 +85,7 @@ export class CopqmanageComponent implements OnInit {
                 text: `{a| DBG  ${this.date.getMonth() + 1}月}现地别COPQ对比 `,
                 // left: '2%',
                 top: '2%',
+                left:'center',
                 textStyle: {
                     color: '#ffffff',
                     fontSize: dpr(16),
@@ -169,9 +170,7 @@ export class CopqmanageComponent implements OnInit {
                         show: true,
                         position: 'inside',
                         fontSize: dpr(10),
-                        formatter: (param: { value: any; }) => {
-                            return param.value;
-                        }
+                        formatter:'{c}%'
                     },
                     itemStyle: {
                         color: '#046CFD'
@@ -189,9 +188,7 @@ export class CopqmanageComponent implements OnInit {
                         show: true,
                         position: 'inside',
                         fontSize: dpr(10),
-                        formatter: (param: { value: any; }) => {
-                            return param.value;
-                        }
+                        formatter:'{c}%'
                     },
                     itemStyle: {
                         color: '#2BB88A'
@@ -208,9 +205,7 @@ export class CopqmanageComponent implements OnInit {
                         show: true,
                         position: 'top',
                         fontSize: dpr(10),
-                        formatter: (param: { value: string; }) => {
-                            return param.value + '%';
-                        },
+                        formatter:'{c}%',
                         textStyle: {
                             color: '#ffffff'
                         }
@@ -231,9 +226,7 @@ export class CopqmanageComponent implements OnInit {
                         show: true,
                         position: 'top',
                         fontSize: dpr(10),
-                        formatter: (param: { value: string; }) => {
-                            return param.value + '%';
-                        },
+                        formatter:'{c}%',
                         textStyle: {
                             color: '#ffffff'
                         }
@@ -256,9 +249,17 @@ export class CopqmanageComponent implements OnInit {
         // const url = 'api/copq/contrast/sbu?date=2020&terrain=B1'
         this.http.get(url).subscribe(res => {
             if (Object.keys(res).length) {
-                this.option4 = this.setOption4(res,`{a| DBG  ${this.date.getMonth() + 1}月}BU别COPQ对比`)
-                // console.log(this.option4);
-
+                let data = {
+                    data:res,
+                    eType:[
+                      // {type:'bar',yname:'比例1',data:''},
+                      // {type:'bar',yname:'比例2',data:[20, 45, 46, 43]},
+                      {type:'line',yname:'COPQ',data:'rate'}],
+                    title:`{a| DBG  ${this.date.getMonth() + 1}月}BU别COPQ对比`,
+                    legend:['COPQ']
+                  }
+                //   this.option4 = setOption4(data)
+                  this.option4 = setOption44(res,'')
             } else {
                 this.option4 = this.defaultoption
             }

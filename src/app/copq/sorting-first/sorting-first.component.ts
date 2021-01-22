@@ -40,52 +40,102 @@ export class SortingFirstComponent implements OnInit {
       },
     ];
     this.chartOption = this.echartsOption.getPieOption(
-      "产品类型",
+      this.chartData,
       ["SUBECINAME", "ECIRATIO"],
-      this.chartData
+      "产品类型"
     );
 
     this.chartData1 = [
       {
         XDATE: "2019",
+        PNLLOSS: 10,
         MDLLOSS: 12,
         LOSSRATE: 2.9,
-        PNLLOSS: 10,
         SEQ: "1",
       },
       {
         XDATE: "2020Q1",
+        PNLLOSS: 20,
         MDLLOSS: 21,
         LOSSRATE: 2.3,
-        PNLLOSS: 20,
-        SEQ: "2",
+        SEQ: "1",
       },
       {
         XDATE: "202001",
+        PNLLOSS: 7,
         MDLLOSS: 7,
         LOSSRATE: 2.4,
-        PNLLOSS: 7,
-        SEQ: "3",
+        SEQ: "2",
       },
       {
         XDATE: "202002",
+        PNLLOSS: 5,
         MDLLOSS: 4,
         LOSSRATE: 2,
-        PNLLOSS: 5,
-        SEQ: "3",
+        SEQ: "2",
       },
       {
         XDATE: "202003",
+        PNLLOSS: 7,
         MDLLOSS: 9,
         LOSSRATE: 2.5,
-        PNLLOSS: 7,
-        SEQ: "3",
+        SEQ: "2",
       },
     ];
-    const option1 = this.echartsOption.getMixBarLine(
-      ["PNL Loss金额", "MDL Loss金额", "DBG LCD Loss率"],
-      ["XDATE", "PNLLOSS", "MDLLOSS", "LOSSRATE"],
-      this.chartData1
+    this.chartOption1 = this.echartsOption.getCategoryMixBarLine1(this.chartData1,['XDATE','SEQ'])
+    /* this.chartOption1 = this.echartsOption.getMultipleMixBarLine(
+      [
+        {
+          XDATE: "2019",
+          PNLLOSS: 10,
+          MDLLOSS: 12,
+          LOSSRATE: 2.9,
+          SEQ: "1",
+        },
+        {
+          XDATE: "2020Q1",
+          PNLLOSS: 20,
+          MDLLOSS: 21,
+          LOSSRATE: 2.3,
+          SEQ: "2",
+        },
+        {
+          XDATE: "202001",
+          PNLLOSS: 7,
+          MDLLOSS: 7,
+          LOSSRATE: 2.4,
+          SEQ: "3",
+        },
+      ],
+      [
+        {
+          XDATE: "202001",
+          PNLLOSS: 7,
+          MDLLOSS: 7,
+          LOSSRATE: 2.4,
+          SEQ: "3",
+        },
+        {
+          XDATE: "202002",
+          PNLLOSS: 5,
+          MDLLOSS: 4,
+          LOSSRATE: 2,
+          SEQ: "3",
+        },
+        {
+          XDATE: "202003",
+          PNLLOSS: 7,
+          MDLLOSS: 9,
+          LOSSRATE: 2.5,
+          SEQ: "3",
+        },
+      ],
+      ["XDATE", "SEQ"]
+    ); */
+    /* const option1 = this.echartsOption.getMixBarLine(
+      this.chartData1,
+      ["XDATE", "SEQ"],
+      ["PNL Loss金额", "MDL Loss金额", "DBG LCD Loss率"]
     );
 
     this.chartOption1 = {
@@ -104,7 +154,7 @@ export class SortingFirstComponent implements OnInit {
         outOfRange: { opacity: 1 },
         inRange: { opacity: 0 },
       },
-    };
+    }; */
   }
 
   getInfo() {
